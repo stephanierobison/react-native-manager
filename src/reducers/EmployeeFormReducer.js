@@ -1,6 +1,7 @@
 import {
-  EMPLOYEE_UPDATE
-} form '../actions/types';
+  EMPLOYEE_UPDATE,
+  EMPLOYEE_CREATE
+} from '../actions/types';
 
 const INITIAL_STATE = {
   name: '',
@@ -9,10 +10,12 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  swtich (action.type){
+  switch (action.type) {
     case EMPLOYEE_UPDATE:
-      return {...state, [action.payload.prop]: action.payload } /// KEY Interpolation
+      return { ...state, [action.payload.prop]: action.payload.value }; /// KEY Interpolation
+    case EMPLOYEE_CREATE:
+      return INITIAL_STATE;
     default:
       return state;
   }
-}
+};
